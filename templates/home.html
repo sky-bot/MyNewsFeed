@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>HEadLinEs</title>
+	<meta charset = "UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity=" sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+	<div style="border-style: solid;border-color: lightgrey" class="container">
+		<div class="row">
+			
+			<h1 style="padding-left: 5%" class="text-center">SkY-Feeds</h1>
+			<h3 style="padding-left: 10%;">Channel</h3>
+			<form style="padding-left:10%" action="/" method="POST">
+				  <input type="text" name="publication" placeholder="search for bbc or cnn">
+				  <input type="submit" value="Submit">
+			</form> 
+			<div style="background-color: orange" class="col-sm-1"></div>
+			<div class="col-sm-5">
+				{% for article in articles %}
+					<b><a href="{{ article.link }}">{{ article.title }}</a></b> <br>
+					<i>{{ article.published }}</i><br>
+					<p>{{ article.summary }}</p><hr>
+				{% endfor %}
+			</div>
+			<div class="col-sm-1">
+				<h3>Current Weather</h3>
+				<p>City:  <b>{{weather.city}}</b></p>
+				<p>{{ weather.description }} | {{ weather.temperature }}&#8457</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

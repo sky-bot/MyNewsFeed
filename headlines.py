@@ -5,49 +5,33 @@ from flask import request
 import json
 import urllib2
 import urllib
-import re
-
+import datetime
+now = datetime.datetime.now()
 
 app = Flask(__name__)
 
-RSS_FEED = {'bbc':'http://feeds.bbci.co.uk/news/rss.xml',
-			'cnn':'http://rss.cnn.com/rss/edition_world.rss',
-			'mint':'http://www.livemint.com/rss/homepage'}
+Hin = "http://www.hindustantimes.com/rss/topnews/rssfeed.xml" 
+Mint = "http://www.livemint.com/rss/homepage"
+Toi = "https://timesofindia.indiatimes.com/rssfeedstopstories.cms"
 
-@app.route("/",methods=['GET','POST'])
+@app.route("/")
 def get_news():
-	query = request.form.get("publication")
-
-	if not query or query.lower() not in RSS_FEED:
-		publication="mint"
-	else:
-		publication = query.lower()
-
-	feed = feedparser.parse(RSS_FEED[publication])
-
-	result=[]
-	summ=[]
-	for article in feed['entries']:
-		print article.title
-		find=re.match(r'<',article.summary)
-		find1=re.match(r'>',article.summary)
-		
-		if find==None or find1==None:
-			continue
-
-		start=find.start()
-		print start
-		print "ashish"
-
-		end=find1.end()
-		
-		result.add(article.summary[start:end+1])
-		articles.add(article.summary[end+1:])
-		print result
-	  
-
+	feed = feedparser.parse(Hin)
+	feed1 = feedparser.parse(Mint)
+	feed2 = feedparser.parse(Toi)
 	weather = get_weather("London,UK")
-	return render_template("home.html",articles = feed['entries'],weather=weather)
+
+	for news in feed1['entries']: 
+		start = news.summary.find('<')
+		last = news.summary.find('>')
+		print news.summary
+		print str(start)+" "+str(last)
+		news.summary=news.summary[last+1:]
+		print news.summary[:last]
+		print "-------------"
+
+	return render_template("home.html",articles = feed['entries'][:5],articles1=feed1['entries'][:5],articles2=feed2['entries'][:5],
+		weather=weather,now=now.strftime("%d, %b %Y | %H:%M"))
 
 def get_weather(query):
 
@@ -64,5 +48,5 @@ def get_weather(query):
 
 	return weather	
 
-if __name__ == "__main__":
-	app.run(port =5000, debug =True)
+if __name__=="__main__":
+	app.run(port=5000,debug=True)

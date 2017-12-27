@@ -10,12 +10,12 @@
 		<div class="row">
 			<h1 style="font-family: 'Bungee Inline', cursive;font-size: 60px;" class="text-center";>Headlines</h1>
 			<h6 class="text-center">{{ now }}</h6>
-			<div>
-				<p>City:  <b>{{ weather.city }} {{ weather.description }} | {{ weather.temperature }}&#8457</b> </p>
+			<div class="col-md-1">
+				
 				
 			</div>
 			
-			<div class="col-sm-3">
+			<div class="col-md-3">
 				<h3><b style="color: #72a7a7">Hindustan Times</b></h3>
 				{% for article in articles %}
 					<b style="font-family: 'Kanit', sans-serif;"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b><br>
@@ -25,7 +25,7 @@
 				{% endfor%}
 			</div>
 		
-			<div class="col-sm-3">
+			<div class="col-md-3">
 				<h3><b style="color: #72a7a7">Mint</b></h3>
 				{% for article in articles1 %}
 					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black; href="{{ article.link }}">{{ article.title }}</a></b> <br>
@@ -34,7 +34,7 @@
 					<p style="font-family: 'Cinzel', serif;">{{ article.summary }}</p><hr>
 				{% endfor %}
 			</div>
-			<div class="col-sm-3">
+			<div class="col-md-3">
 				<h3><b style="color: #72a7a7">Times of India</b></h3>
 				{% for article in articles2 %}
 					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black; href="{{ article.link }}">{{ article.title }}</a></b><br>

@@ -28,7 +28,7 @@
 			<div class="col-md-3">
 				<h3><b style="color: #72a7a7">Mint</b></h3>
 				{% for article in articles1 %}
-					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black; href="{{ article.link }}">{{ article.title }}</a></b> <br>
+					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b> <br>
 					{{ article.value }}
 					<i>{{ article.published }}</i><br>
 					<p style="font-family: 'Cinzel', serif;">{{ article.summary }}</p><hr>
@@ -37,7 +37,7 @@
 			<div class="col-md-3">
 				<h3><b style="color: #72a7a7">Times of India</b></h3>
 				{% for article in articles2 %}
-					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black; href="{{ article.link }}">{{ article.title }}</a></b><br>
+					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b><br>
 					<i>{{ article.published }}</i><br>
 					<p style="font-family: 'Cinzel', serif;">{{ article.description }} </p>
 					<hr>

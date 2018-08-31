@@ -7,15 +7,15 @@ now = datetime.datetime.now()
 
 app = Flask(__name__)
 
-Hin = "http://www.hindustantimes.com/rss/topnews/rssfeed.xml" 
+Toi = "https://timesofindia.indiatimes.com/rssfeedstopstories.cms" 
 Mint = "http://www.livemint.com/rss/homepage"
-Toi = "https://timesofindia.indiatimes.com/rssfeedstopstories.cms"
+Hin = "https://www.thehindu.com/feeder/default.rss"
 
 @app.route("/")
 def get_news():
-	feed = feedparser.parse(Hin)
+	feed = feedparser.parse(Toi)
 	feed1 = feedparser.parse(Mint)
-	feed2 = feedparser.parse(Toi)
+	feed2 = feedparser.parse(Hin)
 
 
 	for news in feed1['entries']: 

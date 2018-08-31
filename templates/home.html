@@ -4,19 +4,29 @@
 	<meta charset = "UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity=" sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Josefin+Slab|Russo+One" rel="stylesheet">
+	<style type="text/css"></style>
 </head>
 <body>
+
+	<header style=" background-image: url('{{ url_for('static', filename='heading.jpeg') }}');background-repeat: no-repeat;background-position: center;">
+				<h1 style="font-family: 'Bungee Inline', cursive;font-size:60px; color: white" class="text-center";>Headlines</h1>
+				<h6 style="font-size: 15px " class="text-center">{{ now }}</h6>
+				<br>
+	</header>
 	<div class="container">
 		<div class="row">
-			<h1 style="font-family: 'Bungee Inline', cursive;font-size: 60px;" class="text-center";>Headlines</h1>
-			<h6 class="text-center">{{ now }}</h6>
+			<br>
+			
+			
 			<div class="col-md-1">
 				
 				
 			</div>
 			
 			<div class="col-md-3">
-				<h3><b style="color: #72a7a7">Hindustan Times</b></h3>
+				<img style="display: block;" src="https://www.indiatoday.in/sites/all/themes/itg/logo.png" alt="indiatoday">
+				<hr>
+				<br>
 				{% for article in articles %}
 					<b style="font-family: 'Kanit', sans-serif;"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b><br>
 					<i>{{ article.published }}</i><br>
@@ -26,16 +36,22 @@
 			</div>
 		
 			<div class="col-md-3">
-				<h3><b style="color: #72a7a7">Mint</b></h3>
+				
+				<img style="background-color: orange" src="{{ url_for('static',filename='mint.png') }} ">
+				<hr>
+				<br>
 				{% for article in articles1 %}
 					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b> <br>
+					<img class="img-responsive" src="{{ article.smallimage }}" align="middle">
 					{{ article.value }}
 					<i>{{ article.published }}</i><br>
-					<p style="font-family: 'Cinzel', serif;">{{ article.summary }}</p><hr>
+					<p style="font-family: 'Cinzel', serif;">{{ article.summary|safe }}</p><hr>
+
 				{% endfor %}
 			</div>
 			<div class="col-md-3">
-				<h3><b style="color: #72a7a7">Times of India</b></h3>
+
+				<img class="img-responsive" src="{{ url_for('static',filename='hindu.png') }}"><hr><br>
 				{% for article in articles2 %}
 					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b><br>
 					<i>{{ article.published }}</i><br>

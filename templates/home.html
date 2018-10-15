@@ -17,13 +17,10 @@
 		<div class="row">
 			<br>
 			
-			
-			<div class="col-md-1">
-				
-				
-			</div>
+			<div class="col-md-1"></div>
 			
 			<div class="col-md-3">
+			<!-- India today -->
 				<img style="display: block;" src="https://www.indiatoday.in/sites/all/themes/itg/logo.png" alt="indiatoday">
 				<hr>
 				<br>
@@ -32,12 +29,20 @@
 					<i>{{ article.published }}</i><br>
 					<p style="font-family: 'Cinzel', serif;">{{ article.description }} </p>
 					<hr>
-				{% endfor%}
+				{% endfor %}
+				<h2><b>NDTV</b></h2><br>
+				{% for article in articles3 %}
+					<b style="font-family: 'Kanit', sans-serif;"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b><br>
+					<i>{{ article.pubDate }}</i><br>
+					<img class="img-responsive" src="{{ article.StoryImage }}" align="middle"> 
+					<p style="font-family: 'Cinzel', serif;">{{ article.description|safe }} </p>
+					<hr>
+				{% endfor %}
 			</div>
 		
 			<div class="col-md-3">
-				
-				<img style="background-color: orange" src="{{ url_for('static',filename='mint.png') }} ">
+				<!-- livemint -->
+				<img style="background-color: orange" src="{{ url_for('static',filename='mint.png') }} "><br>
 				<hr>
 				<br>
 				{% for article in articles1 %}
@@ -46,18 +51,44 @@
 					{{ article.value }}
 					<i>{{ article.published }}</i><br>
 					<p style="font-family: 'Cinzel', serif;">{{ article.summary|safe }}</p><hr>
-
 				{% endfor %}
-			</div>
-			<div class="col-md-3">
+				<h2><b>Indian Express</b></h2><br>
+				{% for article in articles5 %}
+					<b style="font-family: 'Kanit', sans-serif;"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b><br>
+					<i>{{ article.pubDate }}</i><br>
+					<img class="img-responsive" src="{{ article.StoryImage }}" align="middle"> 
+					<p style="font-family: 'Cinzel', serif;">{{ article.description|safe }} </p>
+					<hr>
+				{% endfor %}
 
-				<img class="img-responsive" src="{{ url_for('static',filename='hindu.png') }}"><hr><br>
+
+
+
+
+
+
+
+			</div>
+
+
+			<div class="col-md-3">
+				<!--Hindu  -->
+				<img class="img-responsive" src="{{ url_for('static',filename='hindu.png') }}"><hr><br><br>
 				{% for article in articles2 %}
 					<b style="font-family: 'Kanit', sans-serif;color: black"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b><br>
 					<i>{{ article.published }}</i><br>
 					<p style="font-family: 'Cinzel', serif;">{{ article.description }} </p>
 					<hr>
 				{% endfor%}
+				<br>
+				<h2><b>Economic times</b></h2><br>
+				{% for article in articles4 %}
+					<b style="font-family: 'Kanit', sans-serif;"><a style="color: black;" href="{{ article.link }}">{{ article.title }}</a></b><br>
+					<i>{{ article.pubDate }}</i><br>
+					<img class="img-responsive" src="{{ article.image }}" align="middle"> 
+					<p style="font-family: 'Cinzel', serif;">{{ article.description|safe }} </p>
+					<hr>
+				{% endfor %}
 			</div>
 
 			
